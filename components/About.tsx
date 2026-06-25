@@ -13,10 +13,15 @@ export default function About() {
           {/* Left: Avatar + Stats */}
           <div className="flex flex-col items-center gap-10">
             <div className="relative">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-400 to-violet-500 rotate-6 opacity-15 scale-105" />
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-400 to-violet-500 rotate-3 opacity-15 scale-102" />
-              <div className="relative w-64 h-64 rounded-3xl bg-gradient-to-br from-indigo-100 to-violet-100 border-2 border-white shadow-2xl flex items-center justify-center">
-                <span className="text-8xl font-black text-indigo-200 select-none tracking-tight">PJ</span>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-400 to-violet-500 rotate-6 opacity-20 scale-105" />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-400 to-violet-500 rotate-3 opacity-10 scale-102" />
+              <div className="relative w-64 h-64 rounded-3xl border-2 border-white shadow-2xl overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/profile.jpg"
+                  alt="Pratik Jadhav"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </div>
 

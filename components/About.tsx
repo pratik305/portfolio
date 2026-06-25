@@ -18,7 +18,7 @@ export default function About() {
               <div className="relative w-64 h-64 rounded-3xl border-2 border-white shadow-2xl overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/profile.jpg"
+                  src="/Profile.jpg"
                   alt="Pratik Jadhav"
                   className="w-full h-full object-cover object-top"
                 />

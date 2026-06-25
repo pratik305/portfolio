@@ -48,13 +48,31 @@ const contactDetails = [
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // To wire up email: replace this with a Formspree/EmailJS call
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 4000)
-    setFormData({ name: '', email: '', message: '' })
+    setLoading(true)
+    setError(false)
+    try {
+      const res = await fetch('https://formspree.io/f/mjgqyogp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) {
+        setSubmitted(true)
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setSubmitted(false), 5000)
+      } else {
+        setError(true)
+      }
+    } catch {
+      setError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -150,11 +168,25 @@ export default function Contact() {
                     className="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-white text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all resize-none"
                   />
                 </div>
+                {error && (
+                  <p className="text-sm text-red-500 text-center">
+                    Something went wrong. Please try again or email directly.
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 active:scale-95 transition-all text-sm"
+                  disabled={loading}
+                  className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 active:scale-95 transition-all text-sm disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
-                  Send Message
+                  {loading ? (
+                    <>
+                      <svg className="animate-spin" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
+                      </svg>
+                      Sending…
+                    </>
+                  ) : 'Send Message'}
                 </button>
               </form>
             )}

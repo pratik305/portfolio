@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 
 const navLinks = [
   { label: 'About', href: '#about' },
+  { label: 'Education', href: '#education' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Open Source', href: '#open-source' },
   { label: 'Certifications', href: '#certifications' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -29,7 +29,7 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="font-bold text-xl tracking-tight text-zinc-900">
-          PJ<span className="text-indigo-600">.</span>
+          Pratik<span className="text-indigo-600">.</span>
         </a>
 
         {/* Desktop nav */}

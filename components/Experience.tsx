@@ -1,10 +1,29 @@
 const experiences = [
   {
+    role: 'Data Engineer / Business Data Analyst',
+    company: 'Nuvo Aeon Diamond & Jewellery LLP',
+    duration: 'Jan 2025 – Present',
+    type: 'Full-time · Mumbai, India',
+    current: true,
+    bullets: [
+      'Built end-to-end data pipelines using Airflow, PostgreSQL, and dbt for a 120+ store retail operation',
+      'Developed an agentic AI system using Anthropic Claude API integrated with Apache Airflow',
+      'Identified and fixed a critical data bug causing significant recurring losses across the retail chain',
+      'Built internal BI dashboards using Metabase with JWT-based embedding and store-level parameterization',
+      'Automated marketplace product uploads for TataCliq and Amazon, reducing manual effort significantly',
+      'Designed a Jewellery Audit System tracking a 5-stage inventory lifecycle across stores',
+    ],
+    tags: ['Airflow', 'postgreSQL', 'dbt', 'Metabase', 'Claude API', 'Python'],
+    accent: 'from-indigo-500 to-violet-600',
+    certId: null,
+  },
+  {
     role: 'Data Science Intern',
     company: 'Tata Consultancy Services (TCS iON)',
     duration: 'Jun 2022 – Aug 2022',
-    hours: '210 hours',
-    type: 'Remote Internship',
+    type: 'Remote Internship · 210 hours',
+    current: false,
+    bullets: null,
     description:
       'Built a Salary Prediction Dashboard for HR teams as part of a 210-hour remote internship. Designed and trained ML regression models to predict salary ranges based on candidate profiles, and delivered interactive dashboards for HR decision-making.',
     tags: ['Python', 'Machine Learning', 'Data Visualization', 'Dashboard'],
@@ -15,8 +34,9 @@ const experiences = [
     role: 'Data Science Intern',
     company: 'LetsGrowMore',
     duration: 'May 2024',
-    hours: null,
     type: 'Virtual Internship Program',
+    current: false,
+    bullets: null,
     description:
       'Selected for the LetsGrowMore Virtual Internship Program as a Data Science Intern. Focused on hands-on application of data science concepts, building practical skills through real-world projects under industry mentors.',
     tags: ['Data Science', 'Python', 'Machine Learning'],
@@ -31,11 +51,11 @@ export default function Experience() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <p className="text-xs font-bold text-indigo-600 uppercase tracking-[0.2em] mb-4">
-            Experience
+            Career
           </p>
-          <h2 className="text-4xl font-bold text-zinc-900 mb-4">Internships</h2>
+          <h2 className="text-4xl font-bold text-zinc-900 mb-4">Work Experience</h2>
           <p className="text-zinc-500 max-w-xl mx-auto">
-            Hands-on industry experience in data science and analytics.
+            From internships to building production data systems at scale.
           </p>
         </div>
 
@@ -51,11 +71,24 @@ export default function Experience() {
                   <div className={`w-5 h-5 rounded-full bg-gradient-to-br ${exp.accent}`} />
                 </div>
 
-                <div className="bg-white rounded-2xl border border-zinc-200 p-8 hover:shadow-lg hover:shadow-zinc-100 transition-all">
+                <div className={`bg-white rounded-2xl border p-8 hover:shadow-lg hover:shadow-zinc-100 transition-all ${exp.current ? 'border-indigo-200 shadow-sm shadow-indigo-50' : 'border-zinc-200'}`}>
+                  {/* Top bar for current role */}
+                  {exp.current && (
+                    <div className="h-1 w-full bg-gradient-to-r from-indigo-500 to-violet-600 rounded-full mb-6 -mt-2" />
+                  )}
+
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-zinc-900">{exp.role}</h3>
-                      <p className="text-indigo-600 font-semibold text-sm mt-0.5">{exp.company}</p>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h3 className="text-xl font-bold text-zinc-900">{exp.role}</h3>
+                        {exp.current && (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-700">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            Current
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-indigo-600 font-semibold text-sm">{exp.company}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-zinc-100 text-zinc-600 rounded-full text-xs font-medium">
@@ -64,19 +97,26 @@ export default function Experience() {
                         </svg>
                         {exp.duration}
                       </div>
-                      {exp.hours && (
-                        <div className="text-xs text-zinc-400 mt-1 text-right">{exp.hours}</div>
-                      )}
                     </div>
                   </div>
 
-                  <div className="mb-1">
-                    <span className="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-zinc-100 text-zinc-500 mb-3">
-                      {exp.type}
-                    </span>
-                  </div>
+                  <span className="inline-block px-2.5 py-1 rounded-full text-xs font-medium bg-zinc-100 text-zinc-500 mb-4">
+                    {exp.type}
+                  </span>
 
-                  <p className="text-zinc-600 text-sm leading-relaxed mb-4">{exp.description}</p>
+                  {/* Bullet points for current role */}
+                  {exp.bullets ? (
+                    <ul className="space-y-2 mb-5">
+                      {exp.bullets.map((b, i) => (
+                        <li key={i} className="flex items-start gap-2.5 text-sm text-zinc-600">
+                          <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-zinc-600 text-sm leading-relaxed mb-4">{exp.description}</p>
+                  )}
 
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex flex-wrap gap-2">
@@ -86,7 +126,9 @@ export default function Experience() {
                         </span>
                       ))}
                     </div>
-                    <span className="text-xs text-zinc-400">{exp.certId}</span>
+                    {exp.certId && (
+                      <span className="text-xs text-zinc-400">{exp.certId}</span>
+                    )}
                   </div>
                 </div>
               </div>

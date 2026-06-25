@@ -26,10 +26,28 @@ export default function Hero() {
             </span>
           </h1>
 
-          {/* Role */}
-          <p className="text-2xl md:text-3xl font-semibold text-zinc-400 mb-6 tracking-tight">
-            Data Engineer
-          </p>
+          {/* Role + location */}
+          <div className="flex flex-wrap items-center gap-4 mb-6">
+            <p className="text-2xl md:text-3xl font-semibold text-zinc-400 tracking-tight">
+              Data Engineer
+            </p>
+            <span className="inline-flex items-center gap-1.5 text-sm text-zinc-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              Mumbai, India
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-sm text-zinc-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/>
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                <line x1="12" y1="12" x2="12" y2="16"/>
+                <line x1="10" y1="14" x2="14" y2="14"/>
+              </svg>
+              Open to Remote &amp; Onsite
+            </span>
+          </div>
 
           {/* Bio */}
           <p className="text-lg text-zinc-600 leading-relaxed mb-10 max-w-xl">
@@ -44,20 +62,21 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 active:scale-95 transition-all"
             >
               View Projects
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
               </svg>
+            </a>
+            <a
+              href="/resume.pdf"
+              download="Pratik_Jadhav_Resume.pdf"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-zinc-800 font-semibold rounded-xl border border-zinc-200 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 active:scale-95 transition-all"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" x2="12" y1="15" y2="3"/>
+              </svg>
+              Download Resume
             </a>
             <a
               href="#contact"
